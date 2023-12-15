@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Converter</title>
+</head>
+<body>
+  <h1>URL Converter</h1>
+  <form>
+    <label for="userInput">Enter Text: </label>
+    <input type="text" id="userInput" oninput="convertToUrl()" required>
+  </form>
+
+  <div id="resultContainer"></div>
+
+    <script>
+        function convertToUrl() {
+        const userInput = document.getElementById('userInput').value;
+        const urlFriendlyText = convertToSlug(userInput);
+
+        // Display the result
+        const resultContainer = document.getElementById('resultContainer');
+        resultContainer.innerHTML = `<p>${urlFriendlyText}</p>`;
+        }
+
+        function convertToSlug(text) {
+        return text
+            .toLowerCase()
+            .replace(/[^a-z0-9\s]+/g, '') // Remove special characters
+            .replace(/\s+/g, '-'); // Replace spaces with hyphens
+        }
+
+
+    </script>
+</body>
+</html>
